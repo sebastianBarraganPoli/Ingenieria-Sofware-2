@@ -45,5 +45,39 @@ public class Proveedor {
             return new Proveedor(this);
         }
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Certificacion getCertificacion() {
+        return certificacion;
+    }
+
+    public Evaluacion getEvaluacion() {
+        return evaluacion;
+    }
+
+    public PoliticaEntrega getPoliticaEntrega() {
+        return politicaEntrega;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCertificacion(Certificacion certificacion) {
+        this.certificacion = certificacion;
+    }
+
+    public void setEvaluacion(Evaluacion evaluacion) {
+        this.evaluacion = evaluacion;
+    }
+
+    public void setPoliticaEntrega(PoliticaEntrega politicaEntrega) {
+        this.politicaEntrega = politicaEntrega;
+    }
+
+    
 }
 
