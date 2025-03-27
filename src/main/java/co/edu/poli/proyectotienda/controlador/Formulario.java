@@ -6,6 +6,8 @@ import java.util.List;
 
 import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
+import co.edu.poli.proyectotienda.modelo.Departamento;
+import co.edu.poli.proyectotienda.modelo.Empleado;
 import co.edu.poli.proyectotienda.modelo.Evaluacion;
 import co.edu.poli.proyectotienda.modelo.PoliticaEntrega;
 import co.edu.poli.proyectotienda.modelo.ProductoElectronico;
@@ -68,6 +70,12 @@ public class Formulario {
     
     @FXML
     private TableView<Cliente> tablaClientes;
+    @FXML
+    private Label lblEstructura;
+
+    @FXML
+    private Button btnComposite;
+    @FXML
     
     private ClienteDAOImpl clienteDAO;
     private ProveedorDAOImpl proveedorDAO;
@@ -253,5 +261,29 @@ public class Formulario {
 
         // Mostrar en la UI
         lblResultado.setText(infoProveedor);
+    }
+    
+    public void mostrarEstructuraEmpresa() {
+        // Crear departamentos
+        Departamento ventas = new Departamento("Ventas");
+        Departamento tecnologia = new Departamento("Tecnología");
+
+        // Crear empleados
+        Empleado emp1 = new Empleado("Carlos Gómez");
+        Empleado emp2 = new Empleado("Ana Martínez");
+        Empleado emp3 = new Empleado("Luis Fernández");
+
+        // Agregar empleados a departamentos
+        ventas.agregar(emp1);
+        ventas.agregar(emp2);
+        tecnologia.agregar(emp3);
+
+        // Crear un departamento general y agregar los otros departamentos
+        Departamento empresa = new Departamento("Empresa XYZ");
+        empresa.agregar(ventas);
+        empresa.agregar(tecnologia);
+
+        // Mostrar la estructura en el Label
+        lblEstructura.setText(empresa.mostrarInfo());
     }
 }

@@ -2,7 +2,7 @@ package co.edu.poli.proyectotienda.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-class Departamento implements Componente {
+public class Departamento implements Componente {
     private String nombre;
     private List<Componente> componentes = new ArrayList<>();
 
@@ -19,10 +19,11 @@ class Departamento implements Componente {
     }
 
     @Override
-    public void mostrarInfo() {
-        System.out.println("Departamento: " + nombre);
+    public String mostrarInfo() {
+        StringBuilder info = new StringBuilder("🏢 Departamento: " + nombre + "\n");
         for (Componente c : componentes) {
-            c.mostrarInfo();
+            info.append("   ➜ ").append(c.mostrarInfo()).append("\n");
         }
+        return info.toString();
     }
 }

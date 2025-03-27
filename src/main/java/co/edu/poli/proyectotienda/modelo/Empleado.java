@@ -1,6 +1,6 @@
 package co.edu.poli.proyectotienda.modelo;
 
-class Empleado implements Componente {
+public class Empleado implements Componente {
     private String nombre;
 
     public Empleado(String nombre) {
@@ -8,7 +8,7 @@ class Empleado implements Componente {
     }
 
     @Override
-    public void mostrarInfo() {
-        System.out.println("Empleado: " + nombre);
+    public String mostrarInfo() {
+        return "👨‍💼 Empleado: " + nombre;
     }
 }

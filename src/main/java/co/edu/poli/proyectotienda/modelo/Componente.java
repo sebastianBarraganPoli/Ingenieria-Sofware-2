@@ -1,5 +1,5 @@
 package co.edu.poli.proyectotienda.modelo;
 
-interface Componente {
-    void mostrarInfo();
+public interface Componente {
+    String mostrarInfo();
 }
