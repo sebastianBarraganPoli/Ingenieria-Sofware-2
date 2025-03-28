@@ -4,10 +4,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
+import co.edu.poli.proyectotienda.modelo.Departamento;
+import co.edu.poli.proyectotienda.modelo.Empleado;
+import co.edu.poli.proyectotienda.modelo.Evaluacion;
+import co.edu.poli.proyectotienda.modelo.PoliticaEntrega;
 import co.edu.poli.proyectotienda.modelo.ProductoElectronico;
+import co.edu.poli.proyectotienda.modelo.Proveedor;
+import co.edu.poli.proyectotienda.modelo.Proveedor.ProveedorBuilder;
 import co.edu.poli.proyectotienda.servicios.ClienteDAOImpl;
 import co.edu.poli.proyectotienda.servicios.ConexionDB;
+import co.edu.poli.proyectotienda.servicios.ProveedorDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -37,6 +46,12 @@ public class Formulario {
     
     @FXML
     private Button btn_5;
+
+    @FXML
+    private Button btnCrearProveedor;
+
+    @FXML
+    private Label lblResultado;
     
     @FXML
     private TextArea txtAreaClonado;
@@ -55,8 +70,15 @@ public class Formulario {
     
     @FXML
     private TableView<Cliente> tablaClientes;
+    @FXML
+    private Label lblEstructura;
+
+    @FXML
+    private Button btnComposite;
+    @FXML
     
     private ClienteDAOImpl clienteDAO;
+    private ProveedorDAOImpl proveedorDAO;
     private Connection conexion;
     
     private ProductoElectronico productoOriginal = new ProductoElectronico("P001", "Laptop", 1500.0, 220);
@@ -65,6 +87,7 @@ public class Formulario {
     public void initialize() throws SQLException {
     	conexion = ConexionDB.getInstancia().getConexion(); // Asignar a la variable global
         clienteDAO = new ClienteDAOImpl(conexion);
+        proveedorDAO = new ProveedorDAOImpl(conexion);
         System.out.println("Conexión exitosa con la base de datos.");
         
      // Configurar las columnas
@@ -211,4 +234,56 @@ public class Formulario {
         tablaClientes.setItems(clientes);
     }
 
+    @FXML
+    public void crearProveedor() {
+        // Construcción del proveedor usando el Builder
+        Proveedor proveedor = new ProveedorBuilder()
+            .setNombre("Proveedor ABC")
+            .setCertificacion(new Certificacion("ISO 25001"))
+            .setEvaluacion(new Evaluacion(85))
+            .setPoliticaEntrega(new PoliticaEntrega("Delayed"))
+            .build();
+
+        // Guardar el proveedor en la base de datos
+        proveedorDAO.create(proveedor);
+
+        String infoProveedor = String.format(
+            "✅ Proveedor guardado con éxito:\n" +
+            "📌 Nombre: %s\n" +
+            "📜 Certificación: %s\n" +
+            "⭐ Evaluación: %d\n" +
+            "🚚 Política de Entrega: %s",
+            proveedor.getNombre(),
+            proveedor.getCertificacion().getTipo(),
+            proveedor.getEvaluacion().getPuntaje(),
+            proveedor.getPoliticaEntrega().getTipo()
+        );
+
+        // Mostrar en la UI
+        lblResultado.setText(infoProveedor);
+    }
+    
+    public void mostrarEstructuraEmpresa() {
+        // Crear departamentos
+        Departamento ventas = new Departamento("Ventas");
+        Departamento tecnologia = new Departamento("Tecnología");
+
+        // Crear empleados
+        Empleado emp1 = new Empleado("Carlos Gómez");
+        Empleado emp2 = new Empleado("Ana Martínez");
+        Empleado emp3 = new Empleado("Luis Fernández");
+
+        // Agregar empleados a departamentos
+        ventas.agregar(emp1);
+        ventas.agregar(emp2);
+        tecnologia.agregar(emp3);
+
+        // Crear un departamento general y agregar los otros departamentos
+        Departamento empresa = new Departamento("Empresa XYZ");
+        empresa.agregar(ventas);
+        empresa.agregar(tecnologia);
+
+        // Mostrar la estructura en el Label
+        lblEstructura.setText(empresa.mostrarInfo());
+    }
 }
