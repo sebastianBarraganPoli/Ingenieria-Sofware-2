@@ -28,5 +28,7 @@
       <Label fx:id="lblResultado" layoutX="141.0" layoutY="491.0" text="Label" />
       <Button fx:id="btnComposite" layoutX="298.0" layoutY="438.0" mnemonicParsing="false" onAction="#mostrarEstructuraEmpresa" text="Composite" />
       <Label fx:id="lblEstructura" layoutX="321.0" layoutY="491.0" text="Label" />
+      <Button fx:id="btn_adapter" layoutX="547.0" layoutY="438.0" mnemonicParsing="false" onAction="#realizarPago" text="Adapter" />
+      <Label fx:id="lblPago" layoutX="569.0" layoutY="491.0" text="Label" />
    </children>
 </AnchorPane>

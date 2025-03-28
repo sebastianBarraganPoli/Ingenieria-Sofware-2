@@ -9,6 +9,11 @@ import co.edu.poli.proyectotienda.modelo.Cliente;
 import co.edu.poli.proyectotienda.modelo.Departamento;
 import co.edu.poli.proyectotienda.modelo.Empleado;
 import co.edu.poli.proyectotienda.modelo.Evaluacion;
+import co.edu.poli.proyectotienda.modelo.Pago;
+import co.edu.poli.proyectotienda.modelo.PagoAdapterNequi;
+import co.edu.poli.proyectotienda.modelo.PagoAdapterPaypal;
+import co.edu.poli.proyectotienda.modelo.PagoNequi;
+import co.edu.poli.proyectotienda.modelo.PagoPaypal;
 import co.edu.poli.proyectotienda.modelo.PoliticaEntrega;
 import co.edu.poli.proyectotienda.modelo.ProductoElectronico;
 import co.edu.poli.proyectotienda.modelo.Proveedor;
@@ -72,6 +77,12 @@ public class Formulario {
     private TableView<Cliente> tablaClientes;
     @FXML
     private Label lblEstructura;
+
+    @FXML
+    private Button btn_adapter;
+
+    @FXML
+    private Label lblPago;
 
     @FXML
     private Button btnComposite;
@@ -286,4 +297,21 @@ public class Formulario {
         // Mostrar la estructura en el Label
         lblEstructura.setText(empresa.mostrarInfo());
     }
+
+    @FXML
+    private void realizarPago() {
+        
+        double monto = 100.0; // Ejemplo de monto a pagar
+ 
+        // Pago con Nequi
+        Pago pagoNequi = new PagoAdapterNequi(new PagoNequi());
+        String resultadoNequi = pagoNequi.procesarPago(monto);
+    
+        // Pago con PayPal
+        Pago pagoPaypal = new PagoAdapterPaypal(new PagoPaypal());
+        String resultadoPaypal = pagoPaypal.procesarPago(monto);
+    
+        // Mostrar el resultado en el Label
+        lblPago.setText(resultadoNequi + "\n" + resultadoPaypal);
+    }   
 }
