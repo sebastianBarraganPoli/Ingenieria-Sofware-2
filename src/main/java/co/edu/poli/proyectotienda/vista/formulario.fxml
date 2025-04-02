@@ -32,7 +32,7 @@
       <Label fx:id="lblPago" layoutX="345.0" layoutY="362.0" text="Label" />
       <Button fx:id="btn_envio" layoutX="268.0" layoutY="452.0" mnemonicParsing="false" onAction="#realizarEnvio" text="Bridge" />
       <Label fx:id="lblEnvio" layoutX="345.0" layoutY="456.0" text="Label" />
-      <Button layoutX="484.0" layoutY="358.0" mnemonicParsing="false" text="Decoreator" />
-      <Label layoutX="583.0" layoutY="362.0" text="Label" />
+      <Button fx:id="btn_decorator" layoutX="454.0" layoutY="358.0" mnemonicParsing="false" onAction="#aplicarDecoradores" text="Decorator" />
+      <Label fx:id="lblCarrito" layoutX="544.0" layoutY="362.0" text="Label" />
    </children>
 </AnchorPane>

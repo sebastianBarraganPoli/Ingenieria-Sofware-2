@@ -1,6 +1,6 @@
 package co.edu.poli.proyectotienda.modelo;
 
-interface Carrito {
+public interface Carrito {
     String getDescripcion();
     double getTotal();
 }

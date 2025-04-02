@@ -7,9 +7,13 @@ import java.util.List;
 import co.edu.poli.proyectotienda.modelo.CargaFragil;
 import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
+import co.edu.poli.proyectotienda.modelo.Carrito;
+import co.edu.poli.proyectotienda.modelo.CarritoBase;
 import co.edu.poli.proyectotienda.modelo.Departamento;
+import co.edu.poli.proyectotienda.modelo.Descuento;
 import co.edu.poli.proyectotienda.modelo.Empleado;
 import co.edu.poli.proyectotienda.modelo.Envio;
+import co.edu.poli.proyectotienda.modelo.EnvioGratis;
 import co.edu.poli.proyectotienda.modelo.EnvioNacional;
 import co.edu.poli.proyectotienda.modelo.Evaluacion;
 import co.edu.poli.proyectotienda.modelo.Mercancia;
@@ -22,6 +26,7 @@ import co.edu.poli.proyectotienda.modelo.PoliticaEntrega;
 import co.edu.poli.proyectotienda.modelo.ProductoElectronico;
 import co.edu.poli.proyectotienda.modelo.Proveedor;
 import co.edu.poli.proyectotienda.modelo.Proveedor.ProveedorBuilder;
+import co.edu.poli.proyectotienda.modelo.Puntos;
 import co.edu.poli.proyectotienda.servicios.ClienteDAOImpl;
 import co.edu.poli.proyectotienda.servicios.ConexionDB;
 import co.edu.poli.proyectotienda.servicios.ProveedorDAOImpl;
@@ -66,6 +71,9 @@ public class Formulario {
     private Button btnComposite;
 
     @FXML
+    private Button btn_decorator;
+
+    @FXML
     private Label lblResultado;
     
     @FXML
@@ -93,6 +101,9 @@ public class Formulario {
 
     @FXML
     private Label lblPago;
+
+    @FXML
+    private Label lblCarrito;
 
     @FXML
     private Label lblEnvio;
@@ -334,5 +345,21 @@ public class Formulario {
 
         // Mostrar en la UI
         lblEnvio.setText(envio.entregar());
+    }
+
+    @FXML
+    private void aplicarDecoradores() {
+        // Crear carrito y agregar productos
+        Carrito carrito = new CarritoBase();
+        ((CarritoBase) carrito).agregarItem(new ProductoElectronico("P001", "Laptop", 1500, 220));
+        ((CarritoBase) carrito).agregarItem(new ProductoElectronico("P002", "Teclado", 50, 5));
+
+        // Aplicar decoradores
+        carrito = new Descuento(carrito, 10); // 10% de descuento
+        carrito = new EnvioGratis(carrito); // Envío gratis
+        carrito = new Puntos(carrito); // Acumulación de puntos
+
+        // Mostrar resultado en la UI
+        lblCarrito.setText(carrito.getDescripcion() + "\n💲 Total: $" + carrito.getTotal());
     }
 }

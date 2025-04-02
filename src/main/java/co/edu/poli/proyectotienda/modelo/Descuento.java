@@ -2,25 +2,21 @@ package co.edu.poli.proyectotienda.modelo;
 
 public class Descuento extends CarritoDecorador {
 
-    private double porcentaje_descuento;
+    private double porcentajeDescuento;
 
-    public Descuento(Carrito carrito, double porcentaje_descuento) {
+    public Descuento(Carrito carrito, double porcentajeDescuento) {
         super(carrito);
-        this.porcentaje_descuento = porcentaje_descuento;
+        this.porcentajeDescuento = porcentajeDescuento;
     }
 
     @Override
     protected double modificarTotal() {
-        return getDescuento(carrito.getTotal());
-    }
-
-    public double getDescuento(double amount) {
-        return amount * (1 - porcentaje_descuento / 100.0);
+        return carrito.getTotal() * (1 - porcentajeDescuento / 100.0);
     }
 
     @Override
     public String getDescripcion() {
-        return carrito.getDescripcion() + " + Descuento " + porcentaje_descuento + "%";
+        return carrito.getDescripcion() + " 💰 + Descuento del " + porcentajeDescuento + "%";
     }
 }
 
