@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import co.edu.poli.proyectotienda.modelo.CargaFragil;
 import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
 import co.edu.poli.proyectotienda.modelo.Departamento;
 import co.edu.poli.proyectotienda.modelo.Empleado;
+import co.edu.poli.proyectotienda.modelo.Envio;
+import co.edu.poli.proyectotienda.modelo.EnvioNacional;
 import co.edu.poli.proyectotienda.modelo.Evaluacion;
+import co.edu.poli.proyectotienda.modelo.Mercancia;
 import co.edu.poli.proyectotienda.modelo.Pago;
 import co.edu.poli.proyectotienda.modelo.PagoAdapterNequi;
 import co.edu.poli.proyectotienda.modelo.PagoAdapterPaypal;
@@ -56,6 +60,12 @@ public class Formulario {
     private Button btnCrearProveedor;
 
     @FXML
+    private Button btn_envio;
+
+    @FXML
+    private Button btnComposite;
+
+    @FXML
     private Label lblResultado;
     
     @FXML
@@ -85,8 +95,7 @@ public class Formulario {
     private Label lblPago;
 
     @FXML
-    private Button btnComposite;
-    @FXML
+    private Label lblEnvio;
     
     private ClienteDAOImpl clienteDAO;
     private ProveedorDAOImpl proveedorDAO;
@@ -313,5 +322,17 @@ public class Formulario {
     
         // Mostrar el resultado en el Label
         lblPago.setText(resultadoNequi + "\n" + resultadoPaypal);
-    }   
+    }
+    
+    @FXML
+    private void realizarEnvio() {
+        // Crear una mercancía
+        Mercancia carga = new CargaFragil();  // Prueba con CargaPesada o Documentos
+
+        // Crear un envío
+        Envio envio = new EnvioNacional(carga);  // Prueba con EnvioInternacional
+
+        // Mostrar en la UI
+        lblEnvio.setText(envio.entregar());
+    }
 }
