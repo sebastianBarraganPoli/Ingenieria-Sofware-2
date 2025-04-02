@@ -4,11 +4,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import co.edu.poli.proyectotienda.modelo.CargaFragil;
 import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
 import co.edu.poli.proyectotienda.modelo.Departamento;
 import co.edu.poli.proyectotienda.modelo.Empleado;
+import co.edu.poli.proyectotienda.modelo.Envio;
+import co.edu.poli.proyectotienda.modelo.EnvioNacional;
 import co.edu.poli.proyectotienda.modelo.Evaluacion;
+import co.edu.poli.proyectotienda.modelo.Mercancia;
+import co.edu.poli.proyectotienda.modelo.Pago;
+import co.edu.poli.proyectotienda.modelo.PagoAdapterNequi;
+import co.edu.poli.proyectotienda.modelo.PagoAdapterPaypal;
+import co.edu.poli.proyectotienda.modelo.PagoNequi;
+import co.edu.poli.proyectotienda.modelo.PagoPaypal;
 import co.edu.poli.proyectotienda.modelo.PoliticaEntrega;
 import co.edu.poli.proyectotienda.modelo.ProductoElectronico;
 import co.edu.poli.proyectotienda.modelo.Proveedor;
@@ -51,6 +60,12 @@ public class Formulario {
     private Button btnCrearProveedor;
 
     @FXML
+    private Button btn_envio;
+
+    @FXML
+    private Button btnComposite;
+
+    @FXML
     private Label lblResultado;
     
     @FXML
@@ -74,8 +89,13 @@ public class Formulario {
     private Label lblEstructura;
 
     @FXML
-    private Button btnComposite;
+    private Button btn_adapter;
+
     @FXML
+    private Label lblPago;
+
+    @FXML
+    private Label lblEnvio;
     
     private ClienteDAOImpl clienteDAO;
     private ProveedorDAOImpl proveedorDAO;
@@ -285,5 +305,34 @@ public class Formulario {
 
         // Mostrar la estructura en el Label
         lblEstructura.setText(empresa.mostrarInfo());
+    }
+
+    @FXML
+    private void realizarPago() {
+        
+        double monto = 100.0; // Ejemplo de monto a pagar
+ 
+        // Pago con Nequi
+        Pago pagoNequi = new PagoAdapterNequi(new PagoNequi());
+        String resultadoNequi = pagoNequi.procesarPago(monto);
+    
+        // Pago con PayPal
+        Pago pagoPaypal = new PagoAdapterPaypal(new PagoPaypal());
+        String resultadoPaypal = pagoPaypal.procesarPago(monto);
+    
+        // Mostrar el resultado en el Label
+        lblPago.setText(resultadoNequi + "\n" + resultadoPaypal);
+    }
+    
+    @FXML
+    private void realizarEnvio() {
+        // Crear una mercancía
+        Mercancia carga = new CargaFragil();  // Prueba con CargaPesada o Documentos
+
+        // Crear un envío
+        Envio envio = new EnvioNacional(carga);  // Prueba con EnvioInternacional
+
+        // Mostrar en la UI
+        lblEnvio.setText(envio.entregar());
     }
 }
