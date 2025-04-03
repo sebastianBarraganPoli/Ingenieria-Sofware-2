@@ -9,6 +9,7 @@ import co.edu.poli.proyectotienda.modelo.Certificacion;
 import co.edu.poli.proyectotienda.modelo.Cliente;
 import co.edu.poli.proyectotienda.modelo.Carrito;
 import co.edu.poli.proyectotienda.modelo.CarritoBase;
+import co.edu.poli.proyectotienda.modelo.CarritoVip;
 import co.edu.poli.proyectotienda.modelo.Departamento;
 import co.edu.poli.proyectotienda.modelo.Descuento;
 import co.edu.poli.proyectotienda.modelo.Empleado;
@@ -358,6 +359,7 @@ public class Formulario {
         carrito = new Descuento(carrito, 10); // 10% de descuento
         carrito = new EnvioGratis(carrito); // Envío gratis
         carrito = new Puntos(carrito); // Acumulación de puntos
+        carrito = new CarritoVip(carrito, 5);// 5% de descuento cliente vip
 
         // Mostrar resultado en la UI
         lblCarrito.setText(carrito.getDescripcion() + "\n💲 Total: $" + carrito.getTotal());

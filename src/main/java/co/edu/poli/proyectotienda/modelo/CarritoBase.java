@@ -13,7 +13,7 @@ public class CarritoBase implements Carrito{
 
     @Override
     public String getDescripcion() {
-        return "🛒 Carrito de compras";
+        return "🛒 Carrito de compras:";
     }
     public void agregarItem(Producto item) {
         items.add(item);
