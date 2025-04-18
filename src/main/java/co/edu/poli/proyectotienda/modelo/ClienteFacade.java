@@ -1,15 +1,16 @@
 package co.edu.poli.proyectotienda.modelo;
 
 public class ClienteFacade {
-    
+
     private GestionCliente gestionCliente;
     private GestionPedidos gestionPedidos;
     private GestionFormasPago gestionFormasPago;
 
-    public ClienteFacade() {
-        this.gestionCliente = new GestionCliente();
-        this.gestionPedidos = new GestionPedidos();
-        this.gestionFormasPago = new GestionFormasPago();
+    // Constructor que recibe las instancias desde fuera
+    public ClienteFacade(GestionCliente gestionCliente, GestionPedidos gestionPedidos, GestionFormasPago gestionFormasPago) {
+        this.gestionCliente = gestionCliente;
+        this.gestionPedidos = gestionPedidos;
+        this.gestionFormasPago = gestionFormasPago;
     }
 
     public String mostrarInfoCliente() {
