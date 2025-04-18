@@ -6,7 +6,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.proyectotienda.controlador.Formulario">
    <children>
-      <Button fx:id="btnFacade" layoutX="371.0" layoutY="168.0" mnemonicParsing="false" onAction="#mostrarGestionCliente" text="Facade" />
-      <Label fx:id="lblResultado" layoutX="384.0" layoutY="233.0" text="Label" />
+      <Button fx:id="btnFacade" layoutX="49.0" layoutY="50.0" mnemonicParsing="false" onAction="#mostrarGestionCliente" text="Facade" />
+      <Label fx:id="lblResultado" layoutX="151.0" layoutY="54.0" text="Label" />
+      <Button fx:id="btnProxy" layoutX="49.0" layoutY="189.0" mnemonicParsing="false" onAction="#verProductoProxy" text="Proxy" />
+      <Label fx:id="lblProxyResultado" layoutX="151.0" layoutY="193.0" text="Label" />
    </children>
 </AnchorPane>
