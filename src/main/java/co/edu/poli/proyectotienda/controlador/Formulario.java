@@ -15,9 +15,11 @@ public class Formulario {
     @FXML private TextField txtPorcentaje;
     @FXML private Button btnAumentar;
     @FXML private Label lblResultado;
+    @FXML private Button btnRestaurarPrecio;
 
     private PriceSubject subject;
     private Producto p1, p2, p3;
+    
 
     @FXML
     public void initialize() {
@@ -49,5 +51,19 @@ public class Formulario {
         } catch (NumberFormatException e) {
             lblResultado.setText("🔴 Porcentaje inválido");
         }
+    }
+
+    @FXML
+    private void restaurarPrecio() {
+        StringBuilder resultado = new StringBuilder();
+        for (Producto producto : Arrays.asList(p1, p2, p3)) {
+            producto.restaurarPrecio();
+            resultado.append("🔄 Restaurado: ")
+                    .append(producto.getNombre())
+                    .append(" - Precio: $")
+                    .append(producto.getPrecio())
+                    .append("\n");
+        }
+        lblResultado.setText(resultado.toString());
     }
 }

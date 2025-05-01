@@ -1,5 +1,5 @@
 package co.edu.poli.proyectotienda.modelo;
 
 public interface Observador {
-    void update(double porcentaje);
+    public void update(double porcentaje);
 }

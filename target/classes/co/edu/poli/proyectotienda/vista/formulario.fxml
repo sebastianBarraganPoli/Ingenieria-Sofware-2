@@ -9,7 +9,8 @@
    <children>
       <Button fx:id="btnAumentar" layoutX="184.0" layoutY="164.0" mnemonicParsing="false" onAction="#aumentarPrecios" text="Aumentar Precios" />
       <TextField fx:id="txtPorcentaje" layoutX="164.0" layoutY="122.0" />
-      <Label fx:id="lblResultado" layoutX="434.0" layoutY="159.0" text="Label" />
+      <Label fx:id="lblResultado" layoutX="394.0" layoutY="126.0" text="Label" />
       <Label layoutX="164.0" layoutY="92.0" text="Ingresar el % aumento" />
+      <Button fx:id="btnRestaurarPrecio" layoutX="185.0" layoutY="281.0" mnemonicParsing="false" onAction="#restaurarPrecio" text="Restaurar Precios" />
    </children>
 </AnchorPane>
