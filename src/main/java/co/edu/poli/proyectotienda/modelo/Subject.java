@@ -1,7 +1,7 @@
 package co.edu.poli.proyectotienda.modelo;
 
 public interface Subject {
-    void register(Observador o);
-    void unregister(Observador o);
-    void notifyAllObservers(double porcentaje);
+    public void register(Observador o);
+    public void unregister(Observador o);
+    public void notifyAllObservers(double porcentaje);
 }
