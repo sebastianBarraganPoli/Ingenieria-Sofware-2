@@ -1,6 +1,6 @@
 package co.edu.poli.proyectotienda.modelo;
 
-import com.example.strategy.EstrategiaPago;
+import co.edu.poli.proyectotienda.strategy.EstrategiaPago;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
