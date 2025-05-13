@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.poli.proyectotienda.controlador.PedidosController"
+            prefHeight="600.0" prefWidth="800.0">
+    <children>
+        <SplitPane dividerPositions="0.5" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                                <Label text="Crear Nuevo Pedido" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                                
+                                <Label text="Cliente:" />
+                                <ComboBox fx:id="comboClientes" prefWidth="150.0" />
+                                
+                                <Label text="Productos disponibles:" />
+                                <TableView fx:id="tablaProductos" prefHeight="150.0">
+                                    <columns>
+                                        <TableColumn fx:id="colNombreProducto" prefWidth="150.0" text="Nombre" />
+                                        <TableColumn fx:id="colPrecioProducto" prefWidth="100.0" text="Precio" />
+                                        <TableColumn fx:id="colStockProducto" prefWidth="100.0" text="Stock" />
+                                    </columns>
+                                </TableView>
+                                
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Label text="Cantidad:" />
+                                        <Spinner fx:id="spinnerCantidad" editable="true" />
+                                        <Button fx:id="btnAgregar" text="Agregar al Carrito" />
+                                    </children>
+                                </HBox>
+                                
+                                <Label text="Carrito de compras:" />
+                                <ListView fx:id="listaCarrito" prefHeight="100.0" />
+                                
+                                <Label text="Método de pago:" />
+                                <ComboBox fx:id="comboMetodoPago" prefWidth="150.0" />
+                                
+                                <VBox spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="txtNumeroTarjeta" promptText="Número de tarjeta" visible="false" />
+                                        <TextField fx:id="txtEmail" promptText="Email de PayPal" visible="false" />
+                                        <TextField fx:id="txtCuentaBancaria" promptText="Cuenta bancaria" visible="false" />
+                                    </children>
+                                </VBox>
+                                
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Button fx:id="btnCrearPedido" text="Crear Pedido" />
+                                        <Button fx:id="btnProcesarPedido" text="Procesar Pedido" />
+                                        <Button fx:id="btnCancelarPedido" text="Cancelar Pedido" />
+                                        <Button fx:id="btnDeshacer" text="Deshacer" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                                <Label text="Listado de Pedidos" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                                <TableView fx:id="tablaPedidos" prefHeight="400.0">
+                                    <columns>
+                                        <TableColumn fx:id="colIdPedido" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="colClientePedido" prefWidth="150.0" text="Cliente" />
+                                        <TableColumn fx:id="colEstadoPedido" prefWidth="100.0" text="Estado" />
+                                        <TableColumn fx:id="colMetodoPagoPedido" prefWidth="150.0" text="Método de Pago" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

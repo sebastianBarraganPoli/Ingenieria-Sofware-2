@@ -19,4 +19,3 @@ public class PagoPayPal implements EstrategiaPago {
         return "PayPal (" + email + ")";
     }
 }
-

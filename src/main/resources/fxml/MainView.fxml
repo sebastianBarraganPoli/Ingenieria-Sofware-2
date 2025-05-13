@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.poli.proyectotienda.controlador.MainController"
+            prefHeight="600.0" prefWidth="800.0">
+    <children>
+        <TabPane fx:id="tabPane" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab fx:id="tabPedidos" text="Pedidos" />
+                <Tab fx:id="tabProductos" text="Productos" />
+                <Tab fx:id="tabClientes" text="Clientes" />
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

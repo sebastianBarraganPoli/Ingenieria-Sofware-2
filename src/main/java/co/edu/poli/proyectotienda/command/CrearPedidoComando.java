@@ -22,4 +22,3 @@ public class CrearPedidoComando implements Comando {
         return gestor.eliminarPedido(pedido.getId());
     }
 }
-

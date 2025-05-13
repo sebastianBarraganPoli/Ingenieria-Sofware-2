@@ -19,4 +19,3 @@ public class PagoTransferencia implements EstrategiaPago {
         return "Transferencia a cuenta " + cuentaBancaria;
     }
 }
-

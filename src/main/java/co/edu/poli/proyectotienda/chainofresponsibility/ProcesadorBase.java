@@ -1,6 +1,5 @@
 package co.edu.poli.proyectotienda.chainofresponsibility;
 
-
 import co.edu.poli.proyectotienda.modelo.Pedido;
 
 public abstract class ProcesadorBase implements ProcesadorPedido {
@@ -18,4 +17,3 @@ public abstract class ProcesadorBase implements ProcesadorPedido {
         return true;
     }
 }
-

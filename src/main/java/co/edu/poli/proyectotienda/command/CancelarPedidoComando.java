@@ -34,4 +34,3 @@ public class CancelarPedidoComando implements Comando {
         return gestor.actualizarPedido(pedido);
     }
 }
-

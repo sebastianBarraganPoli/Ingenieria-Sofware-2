@@ -21,4 +21,3 @@ public class PagoTarjeta implements EstrategiaPago {
         return "Tarjeta terminada en " + numeroTarjeta.substring(numeroTarjeta.length() - 4);
     }
 }
-

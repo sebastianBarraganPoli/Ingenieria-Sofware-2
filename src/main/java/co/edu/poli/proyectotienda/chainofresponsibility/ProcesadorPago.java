@@ -21,4 +21,3 @@ public class ProcesadorPago extends ProcesadorBase {
         return procesarSiguiente(pedido);
     }
 }
-

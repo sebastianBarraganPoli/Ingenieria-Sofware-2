@@ -6,4 +6,3 @@ public interface ProcesadorPedido {
     boolean procesarPedido(Pedido pedido);
     void setSiguiente(ProcesadorPedido procesador);
 }
-
