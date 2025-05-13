@@ -10,4 +10,9 @@ module co.edu.poli.proyectotienda {
     
     exports co.edu.poli.proyectotienda.vista;
     exports co.edu.poli.proyectotienda.controlador;
+    exports co.edu.poli.proyectotienda.modelo;
+    exports co.edu.poli.proyectotienda.service;
+    exports co.edu.poli.proyectotienda.strategy;
+    exports co.edu.poli.proyectotienda.command;
+    exports co.edu.poli.proyectotienda.chainofresponsibility;
 }

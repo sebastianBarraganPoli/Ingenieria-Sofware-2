@@ -18,25 +18,15 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-    	AnchorPane main = (AnchorPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/proyectotienda/vista/formulario.fxml"));
-        scene = new Scene(main);
-        stage.setScene(scene);
-        stage.setTitle("Tienda");
-        stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainView.fxml"));
+        primaryStage.setTitle("Sistema de Gestión de Pedidos");
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 
 }
